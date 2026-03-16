@@ -69,212 +69,226 @@
         id: 'warrior',
         name: 'Warrior',
         color: '#e74c3c',
-        speed: 5,
+        speed: 2.5,
         jumpPower: 11,
         weight: 1.2,
         attackPower: 12,
         attackRange: 50,
-        attackSpeed: 15,
-        specialCooldown: 120,
+        attackSpeed: 30,
+        specialCooldown: 240,
         description: 'Balanced fighter with strong melee',
-        special: 'Shield Bash - Knockback immunity + charge'
+        special: 'Shield Bash - Knockback immunity + charge',
+        gravityModifier: 0.5
       },
       {
         id: 'mage',
         name: 'Mage',
         color: '#9b59b6',
-        speed: 4,
+        speed: 2,
         jumpPower: 10,
-        weight: 0.8,
+        weight: 1.1,
         attackPower: 15,
-        attackRange: 80,
-        attackSpeed: 20,
-        specialCooldown: 150,
+        attackRange: 50,
+        attackSpeed: 40,
+        specialCooldown: 300,
         description: 'High damage, ranged attacks',
-        special: 'Arcane Blast - Large AOE damage'
+        special: 'Arcane Blast - Large AOE damage',
+        gravityModifier: 0.5
       },
       {
         id: 'rogue',
         name: 'Rogue',
         color: '#2c3e50',
-        speed: 7,
+        speed: 3.5,
         jumpPower: 12,
         weight: 0.7,
         attackPower: 10,
         attackRange: 35,
-        attackSpeed: 8,
-        specialCooldown: 90,
+        attackSpeed: 16,
+        specialCooldown: 180,
         description: 'Fast and agile assassin',
-        special: 'Shadow Step - Teleport behind enemy'
+        special: 'Shadow Step - Teleport behind enemy',
+        gravityModifier: 0.5
       },
       {
         id: 'paladin',
         name: 'Paladin',
         color: '#f1c40f',
-        speed: 4,
+        speed: 2,
         jumpPower: 9,
         weight: 1.3,
-        attackPower: 11,
+        attackPower: 12,
         attackRange: 45,
-        attackSpeed: 18,
-        specialCooldown: 180,
-        description: 'Tanky with healing ability',
-        special: 'Divine Light - Heal 30% damage'
+        attackSpeed: 36,
+        specialCooldown: 360,
+        description: 'Tanky with special shield ability',
+        special: 'Holy Shield - Temporary invincibility',
+        gravityModifier: 0.5
       },
       {
         id: 'ranger',
         name: 'Ranger',
         color: '#27ae60',
-        speed: 6,
+        speed: 3,
         jumpPower: 11,
-        weight: 0.9,
-        attackPower: 9,
-        attackRange: 120,
-        attackSpeed: 12,
-        specialCooldown: 100,
-        description: 'Long range projectile master',
-        special: 'Arrow Rain - Multiple projectiles'
+        weight: 0.8,
+        attackPower: 6,
+        attackRange: 35,
+        attackSpeed: 30,
+        specialCooldown: 200,
+        description: 'Fires two bullets at once',
+        special: 'Gun Slinger - Multiple projectiles',
+        gravityModifier: 0.47
       },
       {
         id: 'berserker',
         name: 'Berserker',
         color: '#c0392b',
-        speed: 6,
+        speed: 3,
         jumpPower: 10,
         weight: 1.1,
-        attackPower: 14,
+        attackPower: 7,
         attackRange: 40,
-        attackSpeed: 10,
-        specialCooldown: 130,
+        attackSpeed: 30,
+        specialCooldown: 260,
         description: 'More damage when hurt',
-        special: 'Blood Rage - Double damage briefly'
+        special: 'Blood Rage - Double damage briefly',
+        gravityModifier: 0.55
       },
       {
         id: 'necromancer',
         name: 'Necromancer',
         color: '#1abc9c',
-        speed: 4,
+        speed: 2,
         jumpPower: 9,
         weight: 0.85,
         attackPower: 8,
         attackRange: 70,
-        attackSpeed: 16,
-        specialCooldown: 140,
-        description: 'Drains life from enemies',
-        special: 'Soul Drain - Steal health'
+        attackSpeed: 36,
+        specialCooldown: 280,
+        description: 'Powers up at high damage',
+        special: 'Soul Drain - Steal health from close enemies',
+        gravityModifier: 0.5
       },
       {
         id: 'monk',
         name: 'Monk',
         color: '#e67e22',
-        speed: 7,
-        jumpPower: 13,
+        speed: 3.5,
+        jumpPower: 11,
         weight: 0.75,
         attackPower: 8,
         attackRange: 30,
-        attackSpeed: 6,
-        specialCooldown: 80,
+        attackSpeed: 12,
+        specialCooldown: 90,
         description: 'Combo master with mobility',
-        special: 'Flying Kick - Dash attack'
+        special: 'Flying Kick - Dash attack',
+        gravityModifier: 0.5
       },
       {
         id: 'cleric',
         name: 'Cleric',
         color: '#ecf0f1',
-        speed: 4,
+        speed: 2,
         jumpPower: 8,
         weight: 1.0,
         attackPower: 7,
-        attackRange: 60,
-        attackSpeed: 18,
-        specialCooldown: 200,
-        description: 'Support with shields',
-        special: 'Holy Shield - Temporary invincibility'
+        attackRange: 45,
+        attackSpeed: 36,
+        specialCooldown: 400,
+        description: 'Support with healing',
+        special: 'Divine Light - Heal damage',
+        gravityModifier: 0.45
       },
       {
         id: 'samurai',
         name: 'Samurai',
         color: '#3498db',
-        speed: 6,
+        speed: 3,
         jumpPower: 11,
         weight: 0.95,
         attackPower: 13,
         attackRange: 55,
-        attackSpeed: 14,
-        specialCooldown: 110,
+        attackSpeed: 24,
+        specialCooldown: 220,
         description: 'Counter-attack specialist',
-        special: 'Iai Strike - Parry and counter'
+        special: 'Iai Strike - Parry and counter',
+        gravityModifier: 0.55
       },
       {
         id: 'druid',
         name: 'Druid',
         color: '#16a085',
-        speed: 5,
-        jumpPower: 12,
+        speed: 2.5,
+        jumpPower: 10,
         weight: 0.9,
         attackPower: 10,
-        attackRange: 65,
-        attackSpeed: 14,
-        specialCooldown: 160,
-        description: 'Nature attacks with healing',
-        special: 'Thornstorm - Vines damage & heal'
+        attackRange: 35,
+        attackSpeed: 24,
+        specialCooldown: 320,
+        description: 'Nature attacks AOE',
+        special: 'Thornstorm - Deal damage in a large circle',
+        gravityModifier: 0.5
       },
       {
         id: 'psychic',
         name: 'Psychic',
         color: '#af7ac5',
-        speed: 5,
+        speed: 2.5,
         jumpPower: 11,
         weight: 0.8,
         attackPower: 12,
-        attackRange: 90,
-        attackSpeed: 17,
-        specialCooldown: 140,
+        attackRange: 50,
+        attackSpeed: 34,
+        specialCooldown: 240,
         description: 'Mind-based ranged attacks',
-        special: 'Telekinetic Push - Knockback enemy'
+        special: 'Telekinetic Push - Knockback enemy',
+        gravityModifier: 0.45
       },
       {
         id: 'bard',
         name: 'Bard',
         color: '#d35400',
-        speed: 5,
+        speed: 2.5,
         jumpPower: 10,
         weight: 0.85,
         attackPower: 9,
         attackRange: 75,
-        attackSpeed: 13,
-        specialCooldown: 170,
+        attackSpeed: 26,
+        specialCooldown: 340,
         description: 'Support with buffs & debuffs',
-        special: 'Power Chord - Boost speed & damage'
+        special: 'Power Chord - Boost speed & damage',
+        gravityModifier: 0.5
       },
       {
-        id: 'tidecaller',
-        name: 'Tidecaller',
+        id: 'siren',
+        name: 'Siren',
         color: '#2980b9',
-        speed: 6,
+        speed: 3,
         jumpPower: 10,
         weight: 0.88,
         attackPower: 11,
-        attackRange: 85,
-        attackSpeed: 16,
-        specialCooldown: 130,
+        attackRange: 35,
+        attackSpeed: 32,
+        specialCooldown: 260,
         description: 'Water-based projectile attacks',
-        special: 'Tidal Wave - Large water surge'
+        special: 'Tidal Wave - Large water surge',
+        gravityModifier: 0.5
       },
       {
         id: 'astronaut',
         name: 'Astronaut',
         color: '#34495e',
-        speed: 5,
-        jumpPower: 10,
+        speed: 2.5,
+        jumpPower: 6,
         weight: 1.1,
         attackPower: 10,
-        attackRange: 70,
-        attackSpeed: 16,
-        specialCooldown: 150,
+        attackRange: 35,
+        attackSpeed: 32,
+        specialCooldown: 300,
         description: 'Low gravity suit - slow fall speed',
         special: 'Rocket Boost - Upward thrust attack',
-        gravityModifier: 0.4
+        gravityModifier: 0.3
       }
     ];
 
@@ -343,6 +357,7 @@
             ctx.arc(x + 15, h/3 - 15, 20, 0, Math.PI * 2);
             ctx.fill();
           }
+          
           // Floating spores
           ctx.fillStyle = 'rgba(52, 152, 219, 0.3)';
           for (let i = 0; i < 8; i++) {
@@ -857,7 +872,7 @@
 
         // Berserker passive
         if (this.character.id === 'berserker' && this.damage > 100) {
-          this.character.attackPower = 14 * (1 + this.damage / 200);
+          this.character.attackPower = 7 * (1 + this.damage / 200);
         }
 
         this.applyPhysics();
@@ -894,7 +909,7 @@
               createParticles(this.x + this.width/2, this.y + this.height, '#ff6b6b', 5);
             } else if (plat.type === 'sticky') {
               // Sticky platform - reduce movement speed
-              this.vx *= 0.85;
+              this.vx *= 0.5;
               this.vy = 0;
             } else {
               this.vy = 0;
@@ -911,10 +926,9 @@
           this.die();
         }
         
-        // Bounce off top of screen instead of dying
-        if (this.y < 0) {
-          this.y = 0;
-          this.vy = Math.abs(this.vy) * 0.8;
+
+        if (this.y < -100) {
+          this.vy = Math.abs(this.vy) * 0.5;
         }
       }
 
@@ -1016,17 +1030,27 @@
             });
             break;
           case 'ranger':
-            projectiles.push({
-              x: this.x + (this.facing > 0 ? this.width : 0),
-              y: this.y + this.height / 2,
-              vx: this.facing * 12,
-              vy: 0,
-              owner: this.playerNum,
-              damage: this.character.attackPower,
-              color: '#27ae60',
-              life: 50,
-              size: 6
-            });
+    // Use an interval to space out multiple projectiles
+    let shots = 0;
+    const interval = setInterval(() => {
+        if (shots >= 2) {
+            clearInterval(interval);
+            return;
+        }
+        projectiles.push({
+            x: this.x + (this.facing > 0 ? this.width : 0),
+            y: this.y + this.height / 2,
+            vx: this.facing * 12,
+            vy: 0,
+            owner: this.playerNum,
+            damage: this.character.attackPower,
+            color: '#27ae60',
+            life: 50,
+            size: 6
+        });
+        shots++;
+    }, 75); // Delay between each shot
+    break;
             break;
           case 'necromancer':
             projectiles.push({
@@ -1038,7 +1062,7 @@
               damage: this.character.attackPower,
               color: '#1abc9c',
               life: 70,
-              size: 8
+              size: (5 + this.damage / 25),
             });
             break;
           case 'cleric':
@@ -1080,7 +1104,7 @@
               size: 7
             });
             break;
-          case 'tidecaller':
+          case 'siren':
             projectiles.push({
               x: this.x + (this.facing > 0 ? this.width : 0),
               y: this.y + this.height / 2,
@@ -1090,7 +1114,7 @@
               damage: this.character.attackPower,
               color: '#2980b9',
               life: 55,
-              size: 9
+              size: 9,
             });
             break;
           case 'astronaut':
@@ -1140,10 +1164,10 @@
         switch(this.character.id) {
           case 'warrior':
             this.knockbackResist = true;
-            this.vx = this.facing * 15;
+            this.vx = this.facing * 30;
             if (otherPlayer && Math.abs(otherPlayer.x - this.x) < 100) {
               this.hitPlayer(otherPlayer);
-              otherPlayer.vx *= 1.5;
+              otherPlayer.vx *= 2;
             }
             break;
             
@@ -1151,7 +1175,7 @@
             for (let i = -2; i <= 2; i++) {
               projectiles.push({
                 x: this.x + this.width/2,
-                y: this.y,
+                y: this.y + this.height/2,
                 vx: this.facing * 8,
                 vy: i * 2,
                 owner: this.playerNum,
@@ -1167,28 +1191,28 @@
             if (otherPlayer) {
               this.x = otherPlayer.x - this.facing * 60;
               this.y = otherPlayer.y;
-              this.facing *= -1;
+              this.facing *= 1;
               this.invincible = true;
               this.invincibleTimer = 20;
             }
             break;
             
           case 'paladin':
-            this.damage = Math.max(0, this.damage - 30);
-            this.invincible = true;
-            this.invincibleTimer = 30;
+           ;this.invincible = true;
+            this.invincibleTimer = 90;
             break;
             
           case 'ranger':
-            for (let i = 0; i < 5; i++) {
+            this.vy = -9;
+          for (let i = 0; i < 9; i++) {
               setTimeout(() => {
                 projectiles.push({
                   x: this.x + this.width/2,
                   y: this.y,
                   vx: this.facing * 12,
-                  vy: -3 + Math.random() * 2,
+                  vy: 13,
                   owner: this.playerNum,
-                  damage: this.character.attackPower * 0.6,
+                  damage: this.character.attackPower * 0.4,
                   color: '#27ae60',
                   life: 50
                 });
@@ -1206,8 +1230,8 @@
             
           case 'necromancer':
             if (otherPlayer && Math.abs(otherPlayer.x - this.x) < 150) {
-              const stolen = Math.min(20, otherPlayer.damage);
-              otherPlayer.damage += 15;
+              const stolen = Math.min(45, otherPlayer.damage);
+              otherPlayer.damage += 20;
               this.damage = Math.max(0, this.damage - stolen);
             }
             break;
@@ -1227,12 +1251,13 @@
             break;
             
           case 'cleric':
+            this.damage = Math.max(0, this.damage - 30);
             this.invincible = true;
-            this.invincibleTimer = 90;
+            this.invincibleTimer = 15;
             break;
             
           case 'samurai':
-            this.specialTimer = 30;
+            this.specialTimer = 45;
             this.knockbackResist = true;
             // Counter attack if hit during this time
             const originalHit = this.hitPlayer.bind(this);
@@ -1251,30 +1276,29 @@
             break;
             
           case 'druid':
-            // Thornstorm - vines that damage and heal
+            // Thornstorm - vines that damage 
             if (otherPlayer) {
-              for (let i = -2; i <= 2; i++) {
+              for (let i = -10; i <= 10; i++) {
                 projectiles.push({
                   x: this.x + this.width/2,
                   y: this.y,
-                  vx: this.facing * 6 + i * 2,
-                  vy: -2 + i * 1,
+                  vx: Math.random() * 10 - 5,
+                  vy: Math.random() * 10 - 5,
                   owner: this.playerNum,
-                  damage: this.character.attackPower * 0.6,
-                  color: '#27ae60',
-                  life: 50,
+                  damage: this.character.attackPower * 0.5,
+                  color: '#16a085',
+                  life: 25,
                   type: 'vine'
                 });
               }
             }
-            this.damage = Math.max(0, this.damage - 15);
             break;
             
           case 'psychic':
             // Telekinetic Push - large knockback area
-            if (otherPlayer && Math.abs(otherPlayer.x - this.x) < 150) {
-              otherPlayer.vx = (otherPlayer.x > this.x ? 1 : -1) * 15;
-              otherPlayer.vy = -8;
+            if (otherPlayer && Math.abs(otherPlayer.x - this.x) < 250) {
+              otherPlayer.vx = (otherPlayer.x > this.x ? 1 : -1) * 40;
+              otherPlayer.vy = -10;
               otherPlayer.damage += this.character.attackPower * 0.8;
               createParticles(otherPlayer.x + otherPlayer.width/2, otherPlayer.y + otherPlayer.height/2, '#af7ac5', 15);
             }
@@ -1294,10 +1318,8 @@
             createParticles(this.x + this.width/2, this.y, '#d35400', 20);
             break;
             
-          case 'tidecaller':
+          case 'siren':
             // Tidal Wave - forward dash with wave surge
-            this.vx = this.facing * 8;
-            this.vy = -2;
             // Create wave-shaped projectile pattern
             for (let i = -4; i <= 4; i++) {
               setTimeout(() => {
@@ -1310,7 +1332,7 @@
                   damage: this.character.attackPower * 0.65,
                   color: '#5dade2',
                   life: 45,
-                  size: 13,
+                  size: 7 * (1 + this.damage / 150),
                   isWave: true
                 });
               }, i * 15);
@@ -1319,10 +1341,10 @@
             
           case 'astronaut':
             // Rocket Boost - upward thrust attack
-            this.vy = -18;
+            this.vy = -8;
             this.vx = this.facing * 5;
             this.invincible = true;
-            this.invincibleTimer = 25;
+            this.invincibleTimer = 5;
             // Check for hits during upward movement
             if (otherPlayer && Math.abs(otherPlayer.x - this.x) < 80) {
               this.hitPlayer(otherPlayer);
@@ -1426,9 +1448,6 @@
             ctx.lineTo(centerX + 13, centerY - 23);
             ctx.lineTo(centerX + 11, centerY - 18);
             ctx.fill();
-            // Visor
-            ctx.fillStyle = '#666666';
-            ctx.fillRect(centerX - 12, centerY - 2, 24, 4);
             break;
           case 'mage':
             // Tall pointy wizard hat with stars
@@ -1480,10 +1499,6 @@
             ctx.lineTo(centerX + 12, centerY - 20);
             ctx.lineTo(centerX + 18, centerY - 8);
             ctx.fill();
-            // Holy cross on forehead
-            ctx.fillStyle = '#fff8dc';
-            ctx.fillRect(centerX - 2, centerY - 4, 4, 6);
-            ctx.fillRect(centerX - 4, centerY - 1, 8, 2);
             break;
           case 'ranger':
             // Leather hood with feathers and bow details
@@ -1495,7 +1510,7 @@
             ctx.fill();
             // Feathers
             ctx.strokeStyle = '#f1c40f';
-            ctx.lineWidth = 2;
+            ctx.lineWidth = 3;
             ctx.beginPath();
             ctx.moveTo(centerX + 12, centerY - 15);
             ctx.quadraticCurveTo(centerX + 20, centerY - 20, centerX + 18, centerY - 28);
@@ -1507,8 +1522,7 @@
             break;
           case 'berserker':
             // Horned helmet with rage markings
-            ctx.fillStyle = '#c0392b';
-            ctx.fillRect(centerX - 14, centerY - 14, 28, 10);
+            
             ctx.fillStyle = '#888888';
             // Big horns
             ctx.beginPath();
@@ -1554,13 +1568,6 @@
             ctx.beginPath();
             ctx.arc(centerX, centerY + 8, 4, 0, Math.PI * 2);
             ctx.fill();
-            // Symbol inside
-            ctx.strokeStyle = '#fff8dc';
-            ctx.lineWidth = 1;
-            ctx.beginPath();
-            ctx.arc(centerX, centerY + 8, 2, 0, Math.PI * 2);
-            ctx.stroke();
-            break;
           case 'cleric':
             // Halo with holy symbols
             ctx.strokeStyle = '#ecf0f1';
@@ -1659,7 +1666,7 @@
             ctx.quadraticCurveTo(centerX + 18, centerY - 28, centerX + 16, centerY - 36);
             ctx.stroke();
             break;
-          case 'tidecaller':
+          case 'siren':
             // Water crown with flowing waves
             ctx.fillStyle = '#2980b9';
             ctx.beginPath();
@@ -1717,7 +1724,7 @@
         
         // Attack animation
         if (this.attacking) {
-          ctx.fillStyle = 'rgba(255, 255, 255, 0.4)';
+          ctx.fillStyle = 'rgba(255, 255, 255, 0.67)';
           const attackX = this.facing > 0 ? this.x + this.width : this.x - this.character.attackRange;
           ctx.fillRect(attackX, this.y + 10, this.character.attackRange, 12);
         }
