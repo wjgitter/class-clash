@@ -158,7 +158,7 @@
       {
         id: 'necromancer',
         name: 'Necromancer',
-        color: '#1abc9c',
+        color: '#280670',
         speed: 2,
         jumpPower: 9,
         weight: 0.85,
@@ -166,6 +166,8 @@
         attackRange: 70,
         attackSpeed: 36,
         specialCooldown: 280,
+        specialSize: 10,
+        otherSize: 0,
         description: 'Powers up at high damage',
         special: 'Soul Drain - Steal health from close enemies',
         gravityModifier: 0.5
@@ -280,15 +282,83 @@
         name: 'Astronaut',
         color: '#34495e',
         speed: 2.5,
-        jumpPower: 6,
+        jumpPower: 5,
         weight: 1.1,
-        attackPower: 10,
+        attackPower: 7,
         attackRange: 35,
         attackSpeed: 32,
         specialCooldown: 300,
         description: 'Low gravity suit - slow fall speed',
         special: 'Rocket Boost - Upward thrust attack',
-        gravityModifier: 0.3
+        gravityModifier: 0.15
+      },
+      {
+        id: 'shaman',
+        name: 'Shaman',
+        color: '#aac3ff',
+        speed: 2.5,
+        jumpPower: 7.5,
+        weight: 1,
+        attackPower: 10,
+        attackRange: 35,
+        attackSpeed: 32,
+        specialCooldown: 200,
+        specialSize: 10,
+        specialIncrease: 10,
+        description: 'Powerful but slow magic user',
+        special: 'Soul Strike - Gets bigger as time goes on',
+        gravityModifier: 0.45
+      },
+      {
+      id: 'mystic',
+        name: 'Mystic',
+        color: '#d29bde',
+        speed: 2.5,
+        jumpPower: 7.5,
+        weight: 1,
+        attackPower: 10,
+        attackRange: 35,
+        attackSpeed: 32,
+        specialCooldown: 150,
+        specialSize: 10,
+        specialIncrease: 2,
+        description: 'Predict the future',
+        special: 'Knew it - You predict a meteor',
+        gravityModifier: 0.45
+      },
+      {
+      id: 'robot',
+        name: 'Robot',
+        color: '#00ff22',
+        speed: 2.5,
+        jumpPower: 7.5,
+        weight: 1,
+        attackPower: 10,
+        attackRange: 35,
+        attackSpeed: 32,
+        specialCooldown: 350,
+        specialSize: 10,
+        specialIncrease: 2,
+        description: 'Short range with fast projectiles',
+        special: 'Laser - Do NOT get hit',
+        gravityModifier: 0.45
+      },
+      {
+      id: 'oaf',
+        name: 'Oaf',
+        color: '#614d34',
+        speed: 1,
+        jumpPower: 15,
+        weight: 4.5,
+        attackPower: 20,
+        attackRange: 15,
+        attackSpeed: 15,
+        specialCooldown: 200,
+        specialSize: 10,
+        specialIncrease: 2,
+        description: 'Dumb, slow, beefy',
+        special: 'Big Stick',
+        gravityModifier: 5
       }
     ];
 
@@ -878,6 +948,7 @@
         this.applyPhysics();
       }
 
+
       applyPhysics() {
         // Gravity with character-specific modifier
         const gravityMod = this.character.gravityModifier || 1;
@@ -1012,6 +1083,18 @@
             // Holy smite
             createParticles(this.x + this.width/2 + this.facing * 20, this.y + this.height/2, '#f1c40f', 3);
             break;
+            case 'oaf':
+            for (let i = -1; i <= 1; i++) {
+              particles.push({
+                x: this.x + this.width/2 + this.facing * 25,
+                y: this.y + this.height/2 + i * 8,
+                vx: this.facing * 10,
+                vy: i * 3,
+                color: '#614d34',
+                life: 12,
+                size: 4
+              });
+            }
         }
 
         // Character-specific attack projectiles and effects
@@ -1060,10 +1143,11 @@
               vy: 0,
               owner: this.playerNum,
               damage: this.character.attackPower,
-              color: '#1abc9c',
+              color: '#280670',
               life: 70,
               size: (5 + this.damage / 25),
             });
+            this.character.specialSize = this.character.otherSize + 10 + this.damage / 25;
             break;
           case 'cleric':
             projectiles.push({
@@ -1129,6 +1213,53 @@
               life: 60,
               size: 8
             });
+            break;
+            case 'shaman':
+            projectiles.push({
+              x: this.x + (this.facing > 0 ? this.width : 0),
+              y: this.y + this.height / 2,
+              vx: this.facing * 7,
+              vy: 0,
+              owner: this.playerNum,
+              damage: this.character.attackPower,
+              color: 'd29bde',
+              life: 100,
+              size: 10
+            });
+            break;
+            case 'mystic':
+            projectiles.push({
+              x: this.x + (this.facing > 0 ? this.width : 0),
+              y: this.y + this.height / 2 - 25,
+              vx: this.facing * 7,
+              vy: 3,
+              owner: this.playerNum,
+              damage: this.character.attackPower,
+              color: '#6889d9',
+              life: 100,
+              size: 12
+            });
+            break;
+            case 'robot':
+           let shotss = 0;
+    const intervals = setInterval(() => {
+        if (shotss >= 3) {
+            clearInterval(intervals);
+            return;
+        }
+        projectiles.push({
+            x: this.x + (this.facing > 0 ? this.width : 0),
+            y: this.y + this.height / 2,
+            vx: this.facing * 12,
+            vy: Math.random() * 5 - 2.5,
+            owner: this.playerNum,
+            damage: this.character.attackPower,
+            color: '#00ff22',
+            life: 10,
+            size: 3
+        });
+        shotss++;
+    }, 50); 
             break;
         }
       }
@@ -1212,8 +1343,9 @@
                   vx: this.facing * 12,
                   vy: 13,
                   owner: this.playerNum,
-                  damage: this.character.attackPower * 0.4,
+                  damage: this.character.attackPower,
                   color: '#27ae60',
+                  size: 7,
                   life: 50
                 });
               }, i * 50);
@@ -1229,10 +1361,22 @@
             break;
             
           case 'necromancer':
-            if (otherPlayer && Math.abs(otherPlayer.x - this.x) < 150) {
-              const stolen = Math.min(45, otherPlayer.damage);
-              otherPlayer.damage += 20;
+            projectiles.push({
+              x: this.x + this.width / 2,
+              y: this.y + this.height / 2,
+              vx: 0,
+              vy: 0,
+              owner: this.playerNum,
+              damage: this.character.attackPower,
+              color: '#280670bf',
+              life: 35,
+              size: 150
+            });  
+          if (otherPlayer && Math.abs(otherPlayer.x - this.x) < 150) {
+              const stolen = Math.min(30, otherPlayer.damage);
+              otherPlayer.damage += 10;
               this.damage = Math.max(0, this.damage - stolen);
+              this.character.otherSize += 30;
             }
             break;
             
@@ -1276,7 +1420,7 @@
             break;
             
           case 'druid':
-            // Thornstorm - vines that damage 
+           // Thornstorm - vines that damage 
             if (otherPlayer) {
               for (let i = -10; i <= 10; i++) {
                 projectiles.push({
@@ -1288,15 +1432,26 @@
                   damage: this.character.attackPower * 0.5,
                   color: '#16a085',
                   life: 25,
-                  type: 'vine'
+                  size: 10,
                 });
               }
             }
             break;
             
           case 'psychic':
-            // Telekinetic Push - large knockback area
-            if (otherPlayer && Math.abs(otherPlayer.x - this.x) < 250) {
+          projectiles.push({
+              x: this.x + this.width / 2,
+              y: this.y + this.height / 2,
+              vx: 0,
+              vy: 0,
+              owner: this.playerNum,
+              damage: this.character.attackPower,
+              color: '#af7ac5bf',
+              life: 35,
+              size: 150
+            });  
+          // Telekinetic Push - large knockback area
+            if (otherPlayer && Math.abs(otherPlayer.x - this.x) < 150) {
               otherPlayer.vx = (otherPlayer.x > this.x ? 1 : -1) * 40;
               otherPlayer.vy = -10;
               otherPlayer.damage += this.character.attackPower * 0.8;
@@ -1365,7 +1520,67 @@
               });
             }
             break;
-        }
+            case 'shaman':
+            projectiles.push({
+              x: this.x + this.width / 2,
+              y: this.y + this.height / 2,
+              vx: 0,
+              vy: 0,
+              owner: this.playerNum,
+              damage: this.character.attackPower,
+              color: '#6889d9bf',
+              life: 55,
+              size: this.character.specialSize
+            });
+                this.character.specialSize += this.character.specialIncrease;
+            break;
+            case 'mystic':
+            projectiles.push({
+              x: this.x + this.width / 2,
+              y: 0,
+              vx: this.facing * 5,
+              vy: 20,
+              owner: this.playerNum,
+              damage: this.character.attackPower * 2,
+              color: '#ff7c00',
+              life: 100,
+              size: 25
+            });
+            break;
+            case 'robot':
+
+              for (let i = -12; i <= 12; i++) {
+              setTimeout(() => {
+                projectiles.push({
+                  x: this.x + (this.facing > 0 ? this.width : 0),
+                  y: this.y + this.height/2,
+                  vx: this.facing * 15,
+                  vy: 0,
+                  owner: this.playerNum,
+                  damage: 1,
+                  color: '#00ff22',
+                  life: 40,
+                  size: 7,
+                  
+                });
+              }, i * 10);
+            }
+            break;
+          case 'oaf' :
+            projectiles.push({
+                  x: this.x + this.width / 2,
+                  y: this.y + this.height/2,
+                  vx: 0,
+                  vy: 0,
+                  owner: this.playerNum,
+                  damage: 45,
+                  color: '#614d34',
+                  life: 10,
+                  size: 100,
+                  
+                });
+           break;
+      }
       }
 
       die() {
@@ -1718,6 +1933,27 @@
             ctx.beginPath();
             ctx.arc(centerX + 20, centerY - 24, 1.5, 0, Math.PI * 2);
             ctx.fill();
+            break;
+
+            case 'robot':
+            // Space helmet with reflective visor and antenna
+            ctx.fillStyle = '#000000';
+            ctx.beginPath();
+            ctx.arc(centerX, centerY - 2, 17, 0, Math.PI * 2);
+            ctx.fill();
+          ctx.strokeStyle = '#00ff22';
+            ctx.lineWidth = 2.5;
+            ctx.beginPath();
+            ctx.arc(centerX, centerY - 2, 16, 0, Math.PI * 2);
+            ctx.stroke();
+           ctx.fillStyle = '#00ff22';
+        const eyeOffsetX = this.facing > 0 ? 3 : -3;
+        ctx.beginPath();
+        ctx.arc(centerX - 5 + eyeOffsetX, centerY - 2, 2.5, 0, Math.PI * 2);
+        ctx.fill();
+        ctx.beginPath();
+        ctx.arc(centerX + 3 + eyeOffsetX, centerY - 2, 2.5, 0, Math.PI * 2);
+        ctx.fill();
             break;
         }
         
@@ -2300,12 +2536,12 @@
         proj.x += proj.vx;
         proj.y += proj.vy;
         proj.life--;
+        //ummm
         
         // Check hit
         players.forEach(player => {
           if (player.playerNum !== proj.owner && !player.invincible) {
-            if (proj.x > player.x && proj.x < player.x + player.width &&
-                proj.y > player.y && proj.y < player.y + player.height) {
+            if (proj.x + proj.size > player.x && proj.x - proj.size < player.x + player.width && proj.y + proj.size > player.y && proj.y - proj.size < player.y + player.height){
               player.damage += proj.damage;
               const knockback = 1 + player.damage / 150;
               player.vx = Math.sign(proj.vx) * 5 * knockback / player.character.weight;
