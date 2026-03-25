@@ -359,7 +359,23 @@
         description: 'Dumb, slow, beefy',
         special: 'Big Stick',
         gravityModifier: 5
-      }
+      },
+      {
+      id: 'arcanist',
+        name: 'Arcanist',
+        color: '#9da33e',
+        speed: 2.5,
+        jumpPower: 8,
+        weight: 1,
+        attackPower: 12,
+        attackRange: 50,
+        attackSpeed: 30,
+        specialCooldown: 200,
+        attackStyle: 1,
+        description: 'Two different playing styles',
+        special: 'Aracne Shift - Switch playing style',
+        gravityModifier: 0.45
+      },
     ];
 
     // Battle Stages
@@ -1095,7 +1111,9 @@
                 size: 4
               });
             }
+            
         }
+
 
         // Character-specific attack projectiles and effects
         switch(this.character.id) {
@@ -1261,6 +1279,22 @@
         shotss++;
     }, 50); 
             break;
+            case 'arcanist':
+              
+              if(this.character.attackStyle === -1){
+              projectiles.push({
+              x: this.x + (this.facing > 0 ? this.width : 0),
+              y: this.y + this.height / 2,
+              vx: this.facing * 10,
+              vy: 0,
+              owner: this.playerNum,
+              damage: this.character.attackPower,
+              color: '#6da820',
+              life: 60,
+              size: 10
+              });  
+              }
+              break;
         }
       }
 
@@ -1367,10 +1401,10 @@
               vx: 0,
               vy: 0,
               owner: this.playerNum,
-              damage: this.character.attackPower,
+              damage: 0,
               color: '#280670bf',
               life: 35,
-              size: 150
+              size: 110
             });  
           if (otherPlayer && Math.abs(otherPlayer.x - this.x) < 150) {
               const stolen = Math.min(30, otherPlayer.damage);
@@ -1388,6 +1422,9 @@
             if (otherPlayer) {
               setTimeout(() => {
                 if (Math.abs(otherPlayer.x - this.x) < 60) {
+                  this.hitPlayer(otherPlayer);
+                }
+                if (Math.abs(otherPlayer.y - this.y) < 60) {
                   this.hitPlayer(otherPlayer);
                 }
               }, 150);
@@ -1496,7 +1533,7 @@
             
           case 'astronaut':
             // Rocket Boost - upward thrust attack
-            this.vy = -8;
+            this.vy = -10;
             this.vx = this.facing * 5;
             this.invincible = true;
             this.invincibleTimer = 5;
@@ -1580,6 +1617,55 @@
                   
                 });
            break;
+           case 'arcanist' :
+          if(this.character.attackStyle === -1){
+           for (let i = 3; i >= 0; i--) {
+              setTimeout(() => {
+                projectiles.push({
+                  x: this.x + (this.facing > 0 ? this.width : 0),
+                  y: this.y + this.height/2,
+                  vx: this.facing * 12,
+                  vy: 0,
+                  owner: this.playerNum,
+                  damage: 5,
+                  color: '#9da33e',
+                  life: 40,
+                  size: (i + 1) * 8,
+                  
+                });
+              }, (i + 1) * 30);
+            }
+          this.character.attackRange = 50;
+this.character.speed = 2.5;
+this.character.attackPower = 12;
+this.character.attackSpeed = 30;
+
+
+          }
+          if(this.character.attackStyle === 1){
+          this.vy = -7;
+          projectiles.push({
+                  x: this.x + this.width / 2 + (this.facing * 20),
+                  y: this.y + this.height/2,
+                  vx: 0,
+                  vy: -7,
+                  owner: this.playerNum,
+                  damage: 15,
+                  color: '#a88420',
+                  life: 40,
+                  size: 20,
+                  
+                });
+
+this.character.attackRange = 20;
+this.character.speed = 2;
+this.character.attackPower = 10;
+this.character.attackSpeed = 40;
+
+          }
+              
+            this.character.attackStyle += (2 * this.character.attackStyle) * -1;
+            break;
       }
       }
 
